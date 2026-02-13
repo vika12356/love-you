@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+    <meta charset="UTF-8">
+    <title>С Днём Святого Валентина! ❤️</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(45deg, #ffafbd, #ffc3a0);
+            color: #8b0000;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .heart {
+            font-size: 100px;
+            color: #ff4d6d;
+            margin: 20px 0;
+            animation: heartbeat 1.2s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Стили для фотографии */
+        .photo {
+            margin: 20px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 3px solid #ff4d6d;
+        }
+        
+        .photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s;
+        }
+        
+        .photo img:hover {
+            transform: scale(1.05);
+        }
+        
+        .message {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+        
+        .button {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        
+        .button:hover {
+            background-color: #ff002b;
+            transform: scale(1.05);
+        }
+        
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .heart-float {
+            position: absolute;
+            color: rgba(255, 77, 109, 0.7);
+            font-size: 20px;
+            animation: float 5s linear infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="container">
+        <h1>💝 С 14 февраля, Юрочка! 💝</h1>
+        
+        <!-- Добавлена фотография -->
+        <div class="photo">
+            <img src="ВАША_ФОТОГРАФИЯ.jpg" alt="Наше фото" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display:none; color:#ff4d6d; padding:20px;">
+                ⚠️ Добавьте вашу фотографию с именем "ВАША_ФОТОГРАФИЯ.jpg"
+            </div>
+        </div>
+        
+        <div class="heart">❤️</div>
+        
+        <div class="message">
+            <p>Я люблю тебя Юрочка!</p>
+            <p>Жду не дождусь нашей встречи💕</p>
+        </div>
+        
+        <button class="button" onclick="showSpecialMessage()">Нажми для сюрприза! 💌</button>
+        
+        <div id="specialMessage" style="display: none; margin-top: 20px; padding: 15px; background-color: #fff0f3; border-radius: 10px; border: 2px dashed #ff4d6d;">
+            <h3>💕 Секретное послание 💕</h3>
+            <p>Ты самый лучший!<br>
+            Люблю тебя больше жизни</p>
+        </div>
+    </div>
+    
+    <footer>
+        Создано с ❤️ специально для тебя, Юрочка
+    </footer>
+
+    <script>
+        // Создаём плавающие сердечки
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            const heartCount = 30;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-float');
+                heart.innerHTML = '❤️ 💋';
+                
+                // Случайная позиция
+                heart.style.left = Math.random() * 100 + 'vw';
+                
+                // Случайная задержка анимации
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                
+                // Случайный размер
+                const size = 15 + Math.random() * 25;
+                heart.style.fontSize = size + 'px';
+                
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        // Показываем специальное сообщение
+        function showSpecialMessage() {
+            const message = document.getElementById('specialMessage');
+            const button = document.querySelector('.button');
+            
+            if (message.style.display === 'none') {
+                message.style.display = 'block';
+                button.innerHTML = 'Спрятать сообщение 🔒';
+                
+                // Добавляем конфетти
+                createConfetti();
+            } else {
+                message.style.display = 'none';
+                button.innerHTML = 'Нажми для сюрприза! 💌';
+            }
+        }
+        
+        // Создаём конфетти
+        function createConfetti() {
+            const colors = ['#ff4d6d', '#ffafbd', '#ff002b', '#ff8fa3'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = '50%';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-10px';
+                confetti.style.zIndex = '9999';
+                
+                document.body.appendChild(confetti);
+                
+                // Анимация падения
+                const animation = confetti.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                    { transform: `translateY(${window.innerHeight}px) rotate(${360 + Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: 2000 + Math.random() * 2000,
+                    easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)'
+                });
+                
+                // Удаляем конфетти после анимации
+                animation.onfinish = () => confetti.remove();
+            }
+        }
+        
+        // Запускаем создание сердечек при загрузке
+        window.onload = createHearts;
+        
+        // Добавляем случайные сердечки при клике на страницу
+        document.addEventListener('click', function(e) {
+            const heart = document.createElement('div');
+            heart.innerHTML = '💖';
+            heart.style.position = 'fixed';
+            heart.style.left = e.clientX + 'px';
+            heart.style.top = e.clientY + 'px';
+            heart.style.fontSize = '25px';
+            heart.style.pointerEvents = 'none';
+            heart.style.zIndex = '9999';
+            heart.style.animation = 'float 2s linear forwards';
+            
+            document.body.appendChild(heart);
+            
+            // Удаляем сердечко после анимации
+            setTimeout(() => heart.remove(), 2000);
+        });
+    </script>
+</body>
+</html>
